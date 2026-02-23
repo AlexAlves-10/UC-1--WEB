@@ -1,0 +1,43 @@
+<h1> DOM </h1>
+<p> Manipular HTML usando JavaScript </p>
+<hr/>
+
+<p class="textoMensagem" > Aqui aparecerá uma mensagem </p>
+<button onclick="trocarMensagem()" > Trocar mensagem </button>
+
+<hr/>
+
+<p class="dia"></p>
+<button onclick="mensagemDia()">☀</button>
+<button onclick="mensagemNoite()">🌙</button>
+
+
+
+<script>
+
+    function trocarMensagem(){
+
+        let mensagem = "Acredite nos seus sonhos!"
+        document.querySelector(".textoMensagem").innerHTML = mensagem
+
+    }
+
+    function mensagemDia(){
+        let bomDia = "Bom dia!"
+        document.querySelector(".dia").innerHTML = bomDia
+    }
+
+     function mensagemNoite(){
+        let boaNoite = "Boa noite!"
+        document.querySelector(".dia").innerHTML = boaNoite
+    }
+
+
+
+</script>
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+<form onsubmit="cadastrar()" >
+
+<p> Nome completo: </p>
+<input minlength="10" required class="inputNome" />
+
+<p> E-mail:: </p>
+<input type="email" required class="inputEmail" />
+
+
+<p> Idade: </p>
+<input type="number" required class="inputIdade" />
+
+<p> Data de Nascimento: </p>
+<input type="date" required class="inputDataNascimento" />
+
+<p> Telefone: </p>
+<input type="number" required class="inputCelular" />
+
+<p> Estado: </p>
+<select class="inputEstado" name="Estado"> 
+    <option value="estado">Selecione o Estado</option> 
+    <option value="sp">São Paulo</option> 
+    <option value="al">Alagoas</option> 
+    <option value="am">Amazonas</option>
+
+</select>
+
+    
+<p> Observações: </p>
+<input type="text" required class="inputObservacao" />
+
+<br/><br/>
+
+<button> Cadastrar </button>
+
+</form>
+
+
+<script>
+
+    function cadastrar(){
+     let nome = document.querySelector(".inputNome").value
+     let email = document.querySelector(".inputEmail").value
+     let idade = document.querySelector(".inputIdade").value
+     let nascimento = document.querySelector(".inputDataNascimento").value
+     let telefone = document.querySelector(".inputCelular").value
+     let estado = document.querySelector(".inputEstado").value
+     let observacao = document.querySelector(".inputObservacao").value
+
+    alert(nome+"\n"+email+"\n"+idade+"\n"+nascimento+"\n"+telefone+"\n"+estado+"\n"+observacao+"\n")
+
+    }
+
+</script>

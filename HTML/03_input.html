@@ -1,0 +1,39 @@
+<h1> Inputs </h1>
+<p> Como criar campos de interação com o usuário. </p>
+<hr/>
+
+<form  onsubmit="salvar()">
+
+    <p> Digite seu nome: </p>
+    <input minlength="3" required class="inputNome" />
+    
+    <p> Digite sua senha: </p>
+    <input type="password" required class="inputSenha" />
+    
+    <br/> <br/>
+    <button> Salvar </button>
+
+
+</form>
+
+
+
+<script>
+
+    function salvar(){
+       let nome = document.querySelector(".inputNome").value
+       alert("Seja bem-vindo(a), "+nome)
+
+        let senha = document.querySelector(".inputSenha").value
+
+            if(senha == "123"){
+                alert("Logado com sucesso")
+            }else{
+                alert("Senha incorreta...")
+            }
+
+    }
+
+
+</script>
+

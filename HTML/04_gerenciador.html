@@ -1,0 +1,94 @@
+<h1> Gerenciador de usuários </h1>
+<p> Encontre os usuários cadastrados, Crie um novo, altere ou remova. </p>
+
+<hr/>
+
+<h2> Cadastrar </h2>
+
+<form onsubmit="salvar(event)">
+
+    <label>
+        Digite o nome:
+        <br/>
+        <input class="inputNome" />
+    </label>
+
+    <br/><br/>
+
+    <label>
+        Digite o e-mail:
+        <br/>
+        <input class="inputEmail"/>
+    </label>
+
+    <br/><br/>
+
+    <label>
+        Digite a senha:
+        <br/>
+        <input type="password" class="inputSenha" />
+    </label>
+
+    <br/><br/>
+
+    <button type="submit" > Salvar </button>
+    <button type="reset" > Cancelar </button>
+
+</form>
+
+<hr/>
+
+<h2> Listagem </h2>
+
+<table border class="tabelaListagem">
+    <tr>
+        <td> Nome </td>
+        <td> Email </td>
+        <td> Senha </td>
+    </tr>
+</table>
+
+
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+<script>
+
+    // Concatenação ou Interpolação
+
+function salvar(e){
+
+    e.preventDefault()
+
+    let nome = document.querySelector(".inputNome").value
+    let email = document.querySelector(".inputEmail").value
+    let senha = document.querySelector(".inputSenha").value
+
+   // INTERPOLAÇÃO -- alert(`Nome: ${nome}\nEmail: ${email}\nsenha: ${senha}`)
+   // CONCATENAÇÃO -- alert("nome: "+nome....)
+
+   let conteudo = `
+       <tr>
+           <td> ${nome} </td>
+           <td> ${email} </td>
+           <td> ${senha} </td>
+       </tr>
+   `
+   document.querySelector(".tabelaListagem").innerHTML += conteudo
+}
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
