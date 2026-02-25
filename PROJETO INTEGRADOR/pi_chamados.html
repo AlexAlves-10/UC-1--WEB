@@ -1,40 +1,17 @@
-<h1 style="text-align: center;"> Gerenciador de chamados </h1>
+<h1 style="text-align: center;"> Gerenciador de Equipamentos </h1>
 
 <form onsubmit="salvar(event)">
 
+    
     <label>
-        Descrição:
+        Equipamento:
         <br/>
-       <textarea required class="inputDescricao"> </textarea> 
-    </label>
-
-    <br/><br/>
-
-    <label>
-        Setor:
-        <br/>
-        <input required class="inputSetor"/>
+        <input required class="inputEquipamento"/>
     </label>
 
      <br/><br/>
 
-    <label>
-        Solicitante:
-        <br/>
-        <input required class="inputSolicitante"/>
-    </label>
-
-    <br/><br/>
-
-    <label>
-        Anexo:
-        <br/>
-        <input type="file" class="inputAnexo"/>
-    </label>
-
-    <br/><br/>
-
-    <button type="submit" > Salvar </button>
+    <button type="submit" > Cadastrar </button>
     <button type="reset" > Cancelar </button>
 
 </form>
@@ -43,14 +20,11 @@
 <hr/>
 <br/> <br/>
 
-<table border class="tabelaChamado"> <!-- Inicio da tabela -->
+<table border class="tabelaEquipamentos"> <!-- Inicio da tabela -->
 
     <tr> <!-- Table row (linha da tabela) -->
 
-        <td> Descrição </td> <!-- Table data (dado da tabela) -->
-        <td> Setor </td> 
-        <td> Solicitante </td> 
-        <td> Anexo </td> 
+        <td> Equipamentos </td> <!-- Table data (dado da tabela) -->
     
     </tr>
 
@@ -65,20 +39,14 @@
 
     e.preventDefault()
 
-    let descricao = document.querySelector(".inputDescricao").value
-    let setor = document.querySelector(".inputSetor").value
-    let solicitante = document.querySelector(".inputSolicitante").value
-    let anexo = document.querySelector(".inputAnexo").value
+    let equipamento = document.querySelector(".inputEquipamento").value
     
      let conteudo = `
        <tr>
-           <td> ${descricao} </td>
-           <td> ${setor} </td>
-           <td> ${solicitante} </td>
-           <td> ${anexo} </td>
+           <td> ${equipamento} </td>
        </tr>
    `
-   document.querySelector(".tabelaChamado").innerHTML += conteudo
+   document.querySelector(".tabelaEquipamentos").innerHTML += conteudo
 
 
     }
