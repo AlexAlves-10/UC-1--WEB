@@ -48,7 +48,7 @@ export default function Equipamentos() {
                                 <tr>
                                     <td>4</td>
                                     <td> Projetor </td>
-                                    <td> Projeto EPSON 415</td>
+                                    <td> Projetor EPSON 415</td>
                                 </tr>
                                 <tr>
                                     <td> 5 </td>
