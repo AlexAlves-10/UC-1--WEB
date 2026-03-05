@@ -1,7 +1,16 @@
+'use client'
+
+import { useState } from "react";
+
 function Carros() {
 
+    const [nome, alteraNome] = useState("")
+    const [marca, alteraMarca] = useState("")
+    const [valor, alteraValor] = useState()
 
-    const carros = [
+
+    const [carros, alteraListaCarros] = useState(
+        [
         {
             nome: "Civic",
             marca: "Honda",
@@ -62,72 +71,45 @@ function Carros() {
             cor: "Cinza",
             valor: 130000
         },
-        {
-            nome: "T-Cross",
-            marca: "Volkswagen",
-            cor: "Branco",
-            valor: 145000
-        },
-        {
-            nome: "Argo",
-            marca: "Fiat",
-            cor: "Vermelho",
-            valor: 90000
-        },
-        {
-            nome: "Mobi",
-            marca: "Fiat",
-            cor: "Branco",
-            valor: 70000
-        },
-        {
-            nome: "Ranger",
-            marca: "Ford",
-            cor: "Preto",
-            valor: 220000
-        },
-        {
-            nome: "Hilux",
-            marca: "Toyota",
-            cor: "Prata",
-            valor: 250000
-        },
-        {
-            nome: "S10",
-            marca: "Chevrolet",
-            cor: "Branco",
-            valor: 230000
-        },
-        {
-            nome: "208",
-            marca: "Peugeot",
-            cor: "Azul",
-            valor: 95000
-        },
-        {
-            nome: "Polo",
-            marca: "Volkswagen",
-            cor: "Cinza",
-            valor: 105000
-        },
-        {
-            nome: "City",
-            marca: "Honda",
-            cor: "Prata",
-            valor: 125000
-        },
-        {
-            nome: "Fastback",
-            marca: "Fiat",
-            cor: "Preto",
-            valor: 155000
-        }
+       
     ]
+    ) 
+
+    function salvar(e){
+        e.preventDefault()
+        
+        const objeto = {
+            nome: nome,
+            marca: marca,
+            cor: "Preto",
+            valor: valor
+            
+        }
+        
+        //carros.push(objeto)
+        alteraListaCarros(carros.concat(objeto))
+    }
+
     return (
 
         <div >
             <h1> Lista de carros </h1>
             <hr />
+
+            <form onSubmit={salvar} >
+
+                <p> Digite o nome do carro: </p>
+                <input onChange={ e => alteraNome(e.target.value) } />
+                <p> Digite a marca do carro: </p>
+                <input onChange={ e => alteraMarca(e.target.value) } />
+                <p> Digite o valor do carro: </p>
+                <input onChange={ e => alteraValor(e.target.value) } />
+
+                <br/><br/>
+                <button>Salvar</button>
+
+            </form>
+
 
             <table class="table">
                 <thead>
@@ -139,16 +121,16 @@ function Carros() {
                     </tr>
                 </thead>
                 <tbody>
-                   {
-                    carros.map(
-                        item => <tr>
-                                    <td>{item.nome}</td>
-                                    <td>{item.marca}</td>
-                                    <td>{item.cor}</td>
-                                    <td> R$ {item.valor}</td>
-                                </tr>
-                    )
-                   }
+                    {
+                        carros.map(
+                            item => <tr>
+                                <td>{item.nome}</td>
+                                <td>{item.marca}</td>
+                                <td>{item.cor}</td>
+                                <td> R$ {item.valor}</td>
+                            </tr>
+                        )
+                    }
                 </tbody>
             </table>
 
