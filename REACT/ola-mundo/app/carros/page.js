@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Carros() {
 
@@ -9,6 +9,7 @@ function Carros() {
     const [nome, alteraNome] = useState("")
     const [marca, alteraMarca] = useState("")
     const [valor, alteraValor] = useState()
+    const [autenticado, alteraAutenticado] = useState(false)
 
 
     const [carros, alteraListaCarros] = useState(
@@ -90,65 +91,85 @@ function Carros() {
 
         //carros.push(objeto)
         alteraListaCarros(carros.concat(objeto))
+
+
+         useEffect( ()=>{
+
+        const logado = localStorage.getItem("logado")
+        if(logado == "true"){
+            alteraAutenticado(false)
+        }
+
+    }, [] )
+
+    
+
+
+        }
+
+        return (
+
+
+            <div >
+                <h1> Lista de carros </h1>
+
+                <hr />
+
+                <button onClick={() => alteraExibeListagem(true)} class="btn btn-primary" >Listagem</button>
+          
+                {
+                    autenticado == true ?
+                    <button onClick={() => alteraExibeListagem(false)} class="btn btn-success mx-4" >Cadastro</button>
+                :
+                    <div></div>
+                }
+
+                {
+                    exibeListagem == true ?
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Marca</th>
+                                    <th scope="col">Cor</th>
+                                    <th scope="col">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    carros.map(
+                                        item => <tr>
+                                            <td>{item.nome}</td>
+                                            <td>{item.marca}</td>
+                                            <td>{item.cor}</td>
+                                            <td> R$ {item.valor}</td>
+                                        </tr>
+                                    )
+                                }
+                            </tbody>
+                        </table>
+                        :
+                        <form onSubmit={salvar} >
+
+                            <p> Digite o nome do carro: </p>
+                            <input onChange={e => alteraNome(e.target.value)} />
+                            <p> Digite a marca do carro: </p>
+                            <input onChange={e => alteraMarca(e.target.value)} />
+                            <p> Digite o valor do carro: </p>
+                            <input onChange={e => alteraValor(e.target.value)} />
+
+                            <br /><br />
+                            <button>Salvar</button>
+
+                        </form>
+
+                }
+
+
+
+            </div>
+        );
     }
-
-    return (
-
-        <div >
-            <h1> Lista de carros </h1>
-
-            <hr />
-
-            <button onClick={()=> alteraExibeListagem(true)} class="btn btn-primary" >Listagem</button>
-            <button onClick={()=> alteraExibeListagem(false)} class="btn btn-success mx-4" >Cadastro</button>
-
-
-            {
-                exibeListagem == true ?
-
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Marca</th>
-                                <th scope="col">Cor</th>
-                                <th scope="col">Valor</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                carros.map(
-                                    item => <tr>
-                                        <td>{item.nome}</td>
-                                        <td>{item.marca}</td>
-                                        <td>{item.cor}</td>
-                                        <td> R$ {item.valor}</td>
-                                    </tr>
-                                )
-                            }
-                        </tbody>
-                    </table>
-                    :
-                    <form onSubmit={salvar} >
-
-                        <p> Digite o nome do carro: </p>
-                        <input onChange={e => alteraNome(e.target.value)} />
-                        <p> Digite a marca do carro: </p>
-                        <input onChange={e => alteraMarca(e.target.value)} />
-                        <p> Digite o valor do carro: </p>
-                        <input onChange={e => alteraValor(e.target.value)} />
-
-                        <br /><br />
-                        <button>Salvar</button>
-
-                    </form>
-
-            }
-
-
-
-        </div>
-    );
-}
 
 export default Carros;
